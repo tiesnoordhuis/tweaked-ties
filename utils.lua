@@ -24,7 +24,7 @@ function findMonitor()
 end
 
 function findChest(emulateItems)
-    local chest = peripheral.find('chest')
+    local chest = peripheral.find('minecraft:chest')
     if chest == nil then error('Chest not found') end
     if emulateItems and runningAsEmulator() then
         chest.setItem(1, {name = 'minecraft:stone', count = 64})
