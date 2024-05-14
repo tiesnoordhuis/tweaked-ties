@@ -34,10 +34,21 @@ end
 
 function runningAsEmulator()
     return string.find(_G._HOST, 'Minecraft') == nil
-end    
+end 
+
+function showChestInventoryOnMonitor()
+    local monitor = findMonitor()
+    local chest = findChest(true)
+    local inventory = chest.list()
+    for _, item in pairs(inventory) do
+        local name = string.sub(item.name, string.find(item.name, ':') + 1, -1)
+        monitor.writeLine(name .. ": " .. item.count)
+    end
+end
 
 return {
     findMonitor = findMonitor,
     findChest = findChest,
     runningAsEmulator = runningAsEmulator
+    showChestInventoryOnMonitor = showChestInventoryOnMonitor
 }
