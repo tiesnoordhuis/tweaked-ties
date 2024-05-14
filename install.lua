@@ -1,13 +1,17 @@
 -- installing directly in minecraft
 -- using the `wget run <link>` command
 
-local function download(url, path)
-    local request = http.request(url)
-    local response = request.readAll()
-    request.close()
-    local file = fs.open(path, "w")
-    file.write(response)
-    file.close()
+local function downloadFile(url, path)
+    local response = http.get(url)
+    if response and response.getResponseCode() == 200 then
+        local content = response.readAll()
+        local file = fs.open(path, "w")
+        file.write(content)
+        file.close()
+        print("File " .. path .. " downloaded successfully.")
+    else
+        print("Failed to download " .. path)
+    end
 end
 
 local function install()
