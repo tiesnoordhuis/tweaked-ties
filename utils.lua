@@ -49,6 +49,6 @@ end
 return {
     findMonitor = findMonitor,
     findChest = findChest,
-    runningAsEmulator = runningAsEmulator
+    runningAsEmulator = runningAsEmulator,
     showChestInventoryOnMonitor = showChestInventoryOnMonitor
 }
