@@ -33,10 +33,7 @@ function findChest(emulateItems)
 end
 
 function runningAsEmulator()
-    if os.version() == "CraftOS 2.0" and fs.exists("/.minecraft") then
-        return false
-    end
-    return true
+    return string.find(_G._HOST, 'Minecraft') == nil
 end    
 
 return {
